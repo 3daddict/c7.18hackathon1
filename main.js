@@ -1,7 +1,7 @@
 $(document).ready(initializeApp);
 
 function initializeApp () {
-    $(".cell").click(cellClick);
+    // $(".cell").click(cellClick);
 
     drawBoard()
 }
@@ -53,9 +53,9 @@ function drawBoard() {
     var Parent = document.getElementById("game");
     var counter = 1;
     
-    // while (Parent.hasChildNodes()) {
-    //     Parent.removeChild(Parent.firstChild);
-    // }
+    while (Parent.hasChildNodes()) {
+        Parent.removeChild(Parent.firstChild);
+    }
 
     for (s = 0; s < 3; s++) {
         var row = document.createElement("tr");
@@ -64,7 +64,7 @@ function drawBoard() {
             var col = document.createElement("td");
             col.id = counter;
             
-            //col.innerHTML = counter;
+            // col.innerHTML = counter;
 
             var handler = function(e) {
                 if (currentPlayer == 0) {
@@ -93,7 +93,8 @@ function drawBoard() {
                     document.getElementById("player2").innerHTML = points2;
 
                     reset();
-                    drawBoard();
+                    timer = setTimeout(drawBoard, 500)
+                    // drawBoard();
                 }
 
                 else
@@ -173,4 +174,10 @@ function checkWinner() {
             return win;
         }
 
+    function reset(){
+    currentPlayer = 0; // sets the global variable to zero
+    player1Selections = new Array();//resets the player 1 and player 2 arrays to empty;
+    player2Selections = new Array();
+
+}
 
