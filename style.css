@@ -1,0 +1,38 @@
+
+.gameBoard {
+    
+}
+.cell {
+    background-color: #EEE;
+    /* margin: 2.5px 5px; */
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gameValue {
+    font-size: 1.0rem;
+  }
+  
+  @media all and (min-width: 1024px) and (max-width: 4000px) {
+    .gameValue {
+      font-size: 3.0rem;
+    }
+  }
+  
+  @media all and (min-width: 768px) and (max-width: 1024px) {
+    .gameValue {
+      font-size: 2.5rem;
+    }
+  }
+  
+  @media all and (min-width: 480px) and (max-width: 768px) {
+    .gameValue {
+      font-size: 2.0rem;
+    }
+    @media all and (max-width: 480px) {
+        .gameValue {
+          font-size: 1.0rem;
+        }
+    }
+}
