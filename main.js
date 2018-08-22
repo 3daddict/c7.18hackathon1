@@ -1,17 +1,21 @@
 $(document).ready(initializeApp);
 
 function initializeApp () {
-    $(".cell").click(cellClick );
+    $(".cell").click(cellClick);
 
     drawBoard()
 }
 
+var winners = new Array();
 var player1Selections = new Array();
 var player2Selections = new Array();
-var size = 3;
-var winners = new Array();
+var timer;
+var numberOfPlayers = 2;
 var currentPlayer = 0;
-
+var move = 0;
+var points1 = 0;    // player 1 points
+var points2 = 0;    // player 2 points
+var size = 3;
 
 
 // Click Handler for Each Cell
@@ -24,6 +28,7 @@ function cellClick () {
 //need two players
 //how do we log each click result
 //after each click switch between players
+/*
 function drawBoard(){
     var parent = $("#game");
     var counter = 1;
@@ -41,6 +46,76 @@ function drawBoard(){
         }
         parent.append(row);
     }
+}
+*/
+
+function drawBoard() {
+    var Parent = document.getElementById("game");
+    var counter = 1;
+    
+    // while (Parent.hasChildNodes()) {
+    //     Parent.removeChild(Parent.firstChild);
+    // }
+
+    for (s = 0; s < 3; s++) {
+        var row = document.createElement("tr");
+        
+        for (r = 0; r < 3; r++) {
+            var col = document.createElement("td");
+            col.id = counter;
+            
+            //col.innerHTML = counter;
+
+            var handler = function(e) {
+                if (currentPlayer == 0) {
+                    this.innerHTML = "X";
+                    player1Selections.push(parseInt(this.id));
+                    player1Selections.sort(function(a, b) { return a - b });
+                }
+
+                else {
+                    this.innerHTML = "O";
+                    player2Selections.push(parseInt(this.id));
+                    player2Selections.sort(function(a, b) { return a - b });
+                }
+
+                move++;
+                var isWin = checkWinner();
+
+                if (isWin)
+                {
+                    if(currentPlayer == 0)
+                        points1++;
+                    else
+                        points2++;
+
+                    document.getElementById("player1").innerHTML = points1;
+                    document.getElementById("player2").innerHTML = points2;
+
+                    reset();
+                    drawBoard();
+                }
+
+                else
+                {
+                    if (currentPlayer == 0)
+                        currentPlayer = 1;
+                    else
+                        currentPlayer = 0;
+                    this.removeEventListener('click', arguments.callee);
+                }
+            };
+
+            col.addEventListener('click', handler);
+
+            row.appendChild(col);
+            counter++;
+        }
+
+        Parent.appendChild(row);
+    }
+
+    loadAnswers();
 }
 
 function loadAnswers(){
