@@ -27,6 +27,9 @@
 .player {
     font-family: 'Permanent Marker', cursive;
 }
+#playerXWon, #playerOWon {
+    font-family: 'Permanent Marker', cursive;
+}
 .gameButtons {
     margin: auto 15px;
 }
@@ -67,4 +70,10 @@ td:hover {
     100% {
       text-shadow:  #545454 2px 2px,  #545454 3px 3px;
     }
+  }
+
+
+#gameSizeSelection {
+      margin-top: 20px;
+      width: 150px;
   }

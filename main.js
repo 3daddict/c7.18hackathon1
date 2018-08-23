@@ -67,7 +67,11 @@ function clickHandler() {
     checkCol(selectedCol, amountToWin);
     if(--totalAvailableSquares===0){
         console.log('cat game')
+
+        $('#modalDraw').modal('show');
+
         $('#drawSound').trigger('play')
+
     }
     checkDia1(selectedRow, selectedCol, amountToWin);
     checkDia2(selectedRow, selectedCol, amountToWin);
@@ -86,6 +90,12 @@ function clickHandler() {
         }
         if (xCount === winningCount) {
             console.log('x wins');
+            $('#modalWin').modal('show');
+            $('#modalWinPlayer').text('X');
+        } else if (oCount === winningCount) {
+            console.log('o wins');
+            $('#modalWin').modal('show');
+            $('#modalWinPlayer').text('O');
             player1Count = player1Count + 1;
             $('#playerXWon').text(player1Count);
             $('#winSound').trigger('play')
@@ -118,6 +128,13 @@ function clickHandler() {
         }
         if (counts.X === winningCount) {
             console.log('x wins');
+            $('#modalWin').modal('show');
+            $('#modalWinPlayer').text('X');
+            return 'X';
+        } else if (counts.O === winningCount) {
+            console.log('o wins');
+            $('#modalWin').modal('show');
+            $('#modalWinPlayer').text('O');
             player1Count = player1Count + 1;
             $('#playerXWon').text(player1Count);
             $('#winSound').trigger('play')
@@ -155,6 +172,11 @@ function checkDia1(selectedRow,selectedCol, winningCount){
     }
     if (xCount === winningCount) {
         console.log('x wins - dia1');
+        $('#modalWin').modal('show');
+        $('#modalWinPlayer').text('X');
+    } else if (oCount === winningCount) {
+        $('#modalWin').modal('show');
+        $('#modalWinPlayer').text('O');
         player1Count = player1Count + 1;
         $('#playerXWon').text(player1Count);
         $('#winSound').trigger('play')
@@ -179,10 +201,15 @@ function checkDia2(selectedRow,selectedCol, winningCount){
     }
     if (xCount === winningCount) {
         console.log('x wins - dia2');
+        $('#modalWin').modal('show');
+        $('#modalWinPlayer').text('X');
+
         player1Count = player1Count + 1;
         $('#playerXWon').text(player1Count);
         $('#winSound').trigger('play')
     } else if (oCount === winningCount) {
+        $('#modalWin').modal('show');
+        $('#modalWinPlayer').text('O');
         console.log('o wins - dia2');
         player2Count = player2Count + 1;
         $('#playerOWon').text(player2Count);
