@@ -9,8 +9,8 @@ function initializeApp() {
 
 //Global Variables
 var currentPlayer = 0;
-// var player1Selection = [];
-// var player2Selection = [];
+var player1Count = 0;
+var player2Count = 0;
 var currentPlayerEntry = ['X', 'O'];
 var winner = [];
 var amountToWin = 3;
@@ -33,6 +33,7 @@ function drawBoard() {
     }
 }
 
+// Click Handler
 function clickHandler() {
     if($(this).text()!==''){
         return;
@@ -69,6 +70,7 @@ function clickHandler() {
     checkDia2(selectedRow, selectedCol, amountToWin);
 
 
+    // Checking Row Winnings
     function checkRow(row, winningCount){
         var xCount = 0;
         var oCount = 0;
@@ -81,17 +83,21 @@ function clickHandler() {
         }
         if (xCount === winningCount) {
             console.log('x wins');
+            player1Count = player1Count + 1;
+            $('#playerXWon').text(player1Count);
         } else if (oCount === winningCount) {
             console.log('o wins');
+            player2Count = player2Count + 1;
+            $('#playerOWon').text(player2Count);
         }
     }
 
+    // Checking Column Winnings
     function checkCol(col, winningCount){
         var counts = {
             X: 0,
             O: 0,
             "": 0
-
         }
         var xCount = 0;
         var oCount = 0;
@@ -107,9 +113,13 @@ function clickHandler() {
         }
         if (counts.X === winningCount) {
             console.log('x wins');
+            player1Count = player1Count + 1;
+            $('#playerXWon').text(player1Count);
             return 'X';
         } else if (counts.O === winningCount) {
             console.log('o wins');
+            player2Count = player2Count + 1;
+            $('#playerOWon').text(player2Count);
             return 'O'
         } else if(counts['']===0){
             return false;
@@ -125,6 +135,7 @@ function clickHandler() {
 
 // }
 
+// Checking Diagonal 1 (left top - right bottom) Winnings
 function checkDia1(selectedRow,selectedCol, winningCount){
     var xCount = 0;
     var oCount = 0;
@@ -137,11 +148,16 @@ function checkDia1(selectedRow,selectedCol, winningCount){
     }
     if (xCount === winningCount) {
         console.log('x wins - dia1');
+        player1Count = player1Count + 1;
+        $('#playerXWon').text(player1Count);
     } else if (oCount === winningCount) {
+        player2Count = player2Count + 1;
+        $('#playerOWon').text(player2Count);
         console.log('o wins - dia1');
     }
 }
 
+// Checking Diagonal 2 (right top - left bottom) Winnings
 function checkDia2(selectedRow,selectedCol, winningCount){
     var xCount = 0;
     var oCount = 0;
@@ -154,8 +170,12 @@ function checkDia2(selectedRow,selectedCol, winningCount){
     }
     if (xCount === winningCount) {
         console.log('x wins - dia2');
+        player1Count = player1Count + 1;
+        $('#playerXWon').text(player1Count);
     } else if (oCount === winningCount) {
         console.log('o wins - dia2');
+        player2Count = player2Count + 1;
+        $('#playerOWon').text(player2Count);
     }
 }
 
@@ -165,3 +185,7 @@ var loadAnswers = [
     ['','','']
     ]
     
+
+function playerStats () {
+    $('#"playerXWon').text();
+}    
