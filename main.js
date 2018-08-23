@@ -242,9 +242,9 @@
     }
 
     function resetStats (){
-        var currentPlayer = 0;
-        var player1Count = 0;
-        var player2Count = 0;
+        currentPlayer = 0;
+        player1Count = 0;
+        player2Count = 0;
         games_played = 0;
         $('#playerXWon').text('0');
         $('#playerOWon').text('0');
@@ -275,16 +275,3 @@
         games_played = games_played + 1;
         $('#gamesPlayed').text(games_played);
     }
-
-    //    function resetStatsClickHandler (){
-
-    //     games_played = games_played + 1;
-    //     resetStats();
-    //    }
-
-    // function displayStats(){
-    //     $('.games-played .value').text(games_played);
-    //     $('.attempts .value').text(attempts);
-    //     accuracy = (matches / attempts)*100;
-    //     $('.accuracy .value').text(accuracy.toFixed()+ '%');
-    // }
