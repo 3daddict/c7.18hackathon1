@@ -7,6 +7,8 @@
         $('#resetStats').click(resetStats);
         $('#playAgain1').click(clearBoard);
         $('#playAgain2').click(clearBoard);
+        $('#playAgain1').click(gamesPlayedCount);
+        $('#playAgain2').click(gamesPlayedCount);
         $('#settingsButton').click(settingsButton);
     }
 
@@ -266,6 +268,11 @@
 
     function settingsButton(){
         $('#modalSettings').modal('show');
+    }
+
+    function gamesPlayedCount(){
+        games_played = games_played + 1;
+        $('#gamesPlayed').text(games_played);
     }
 
     //    function resetStatsClickHandler (){
