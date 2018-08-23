@@ -4,7 +4,7 @@ $(document).ready(initializeApp);
 function initializeApp() {
     drawBoard();  
     $("td").click(clickHandler);
-
+    $('#resetStats').click(resetStats);
 }
 
 //Global Variables
@@ -15,6 +15,7 @@ var currentPlayerEntry = ['X', 'O'];
 var winner = [];
 var amountToWin = 3;
 var totalAvailableSquares = null;
+var games_played = 0;
 
 
 // Create board dynamically on the dom
@@ -196,6 +197,7 @@ var loadAnswers = [
     ]
     
 
+
 function playerStats () {
     $('#"playerXWon').text();
 }    
@@ -209,3 +211,33 @@ function play() {
         audio.currentTime = 0
     }
 }
+
+   function resetStats (){
+    var currentPlayer = 0;
+    var player1Count = 0;
+    var player2Count = 0;
+    $('#playerXWon').text('0');
+    $('#playerOWon').text('0');
+    $('#gamesPlayed').text('0');
+    clearBoard();
+   }
+
+   function clearBoard(){
+       $('.gameBoard').empty();
+       drawBoard();
+
+   }
+
+//    function resetStatsClickHandler (){
+
+//     games_played = games_played + 1;
+//     resetStats();
+//    }
+
+// function displayStats(){
+//     $('.games-played .value').text(games_played);
+//     $('.attempts .value').text(attempts);
+//     accuracy = (matches / attempts)*100;
+//     $('.accuracy .value').text(accuracy.toFixed()+ '%');
+// }
+
