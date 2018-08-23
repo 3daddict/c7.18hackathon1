@@ -64,6 +64,7 @@ function clickHandler() {
     checkCol(selectedCol, amountToWin);
     if(--totalAvailableSquares===0){
         console.log('cat game')
+        $('#modalDraw').modal('show');
     }
     checkDia1(selectedRow, selectedCol, amountToWin);
     checkDia2(selectedRow, selectedCol, amountToWin);
@@ -81,8 +82,12 @@ function clickHandler() {
         }
         if (xCount === winningCount) {
             console.log('x wins');
+            $('#modalWin').modal('show');
+            $('#modalWinPlayer').text('X');
         } else if (oCount === winningCount) {
             console.log('o wins');
+            $('#modalWin').modal('show');
+            $('#modalWinPlayer').text('O');
         }
     }
 
@@ -107,9 +112,13 @@ function clickHandler() {
         }
         if (counts.X === winningCount) {
             console.log('x wins');
+            $('#modalWin').modal('show');
+            $('#modalWinPlayer').text('X');
             return 'X';
         } else if (counts.O === winningCount) {
             console.log('o wins');
+            $('#modalWin').modal('show');
+            $('#modalWinPlayer').text('O');
             return 'O'
         } else if(counts['']===0){
             return false;
@@ -137,7 +146,11 @@ function checkDia1(selectedRow,selectedCol, winningCount){
     }
     if (xCount === winningCount) {
         console.log('x wins - dia1');
+        $('#modalWin').modal('show');
+        $('#modalWinPlayer').text('X');
     } else if (oCount === winningCount) {
+        $('#modalWin').modal('show');
+        $('#modalWinPlayer').text('O');
         console.log('o wins - dia1');
     }
 }
@@ -154,7 +167,11 @@ function checkDia2(selectedRow,selectedCol, winningCount){
     }
     if (xCount === winningCount) {
         console.log('x wins - dia2');
+        $('#modalWin').modal('show');
+        $('#modalWinPlayer').text('X');
     } else if (oCount === winningCount) {
+        $('#modalWin').modal('show');
+        $('#modalWinPlayer').text('O');
         console.log('o wins - dia2');
     }
 }
