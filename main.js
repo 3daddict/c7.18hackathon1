@@ -35,8 +35,26 @@ function clickHandler() {
     $(this).text(currentPlayerEntry[currentPlayer]); //currentPlayerEntry[] <- check with 0 or 1 for player
     if(currentPlayer === 0) {
         currentPlayer = 1;
+
+        var selectedRow = $(this).attr('row');
+        // console.log(selectedRow);
+        var selectedCol = $(this).attr('col');
+        var selectedValue = $(this).text();
+        loadAnswers[selectedRow][selectedCol] = selectedValue;
+        // console.log(selectedValue);
+        $('#playerXName').removeClass('activePlayer');
+        $('#playerOName').addClass('activePlayer');
     } else {
         currentPlayer = 0;
+
+        var selectedRow = $(this).attr('row');
+        // console.log(selectedRow);
+        var selectedCol = $(this).attr('col');
+        var selectedValue = $(this).text();
+        loadAnswers[selectedRow][selectedCol] = selectedValue;
+        console.log('this is selected value',selectedValue);
+        $('#playerXName').addClass('activePlayer');
+        $('#playerOName').removeClass('activePlayer');
     }
     var selectedRow = $(this).attr('row');
     // console.log(selectedRow);
