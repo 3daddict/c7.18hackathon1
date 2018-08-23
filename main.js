@@ -35,6 +35,7 @@ function drawBoard() {
 
 // Click Handler
 function clickHandler() {
+    play()
     if($(this).text()!==''){
         return;
     }
@@ -65,6 +66,7 @@ function clickHandler() {
     checkCol(selectedCol, amountToWin);
     if(--totalAvailableSquares===0){
         console.log('cat game')
+        $('#drawSound').trigger('play')
     }
     checkDia1(selectedRow, selectedCol, amountToWin);
     checkDia2(selectedRow, selectedCol, amountToWin);
@@ -85,10 +87,12 @@ function clickHandler() {
             console.log('x wins');
             player1Count = player1Count + 1;
             $('#playerXWon').text(player1Count);
+            $('#winSound').trigger('play')
         } else if (oCount === winningCount) {
             console.log('o wins');
             player2Count = player2Count + 1;
             $('#playerOWon').text(player2Count);
+            $('#winSound').trigger('play')
         }
     }
 
@@ -115,11 +119,13 @@ function clickHandler() {
             console.log('x wins');
             player1Count = player1Count + 1;
             $('#playerXWon').text(player1Count);
+            $('#winSound').trigger('play')
             return 'X';
         } else if (counts.O === winningCount) {
             console.log('o wins');
             player2Count = player2Count + 1;
             $('#playerOWon').text(player2Count);
+            $('#winSound').trigger('play')
             return 'O'
         } else if(counts['']===0){
             return false;
@@ -150,10 +156,12 @@ function checkDia1(selectedRow,selectedCol, winningCount){
         console.log('x wins - dia1');
         player1Count = player1Count + 1;
         $('#playerXWon').text(player1Count);
+        $('#winSound').trigger('play')
     } else if (oCount === winningCount) {
         player2Count = player2Count + 1;
         $('#playerOWon').text(player2Count);
         console.log('o wins - dia1');
+        $('#winSound').trigger('play')
     }
 }
 
@@ -172,10 +180,12 @@ function checkDia2(selectedRow,selectedCol, winningCount){
         console.log('x wins - dia2');
         player1Count = player1Count + 1;
         $('#playerXWon').text(player1Count);
+        $('#winSound').trigger('play')
     } else if (oCount === winningCount) {
         console.log('o wins - dia2');
         player2Count = player2Count + 1;
         $('#playerOWon').text(player2Count);
+        $('#winSound').trigger('play')
     }
 }
 
@@ -189,3 +199,13 @@ var loadAnswers = [
 function playerStats () {
     $('#"playerXWon').text();
 }    
+
+//function play the audio file over again without waiting for it to finish
+function play() {
+    var audio = document.getElementById('clickAudio');
+    if (audio.paused) {
+        audio.play();
+    }else{
+        audio.currentTime = 0
+    }
+}
