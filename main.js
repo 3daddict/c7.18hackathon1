@@ -1,5 +1,6 @@
 $(document).ready(initializeApp);
 
+
 function initializeApp() {
     drawBoard();  
     $("td").click(clickHandler);
@@ -34,20 +35,70 @@ function clickHandler() {
         $(this).text(currentPlayerEntry[currentPlayer]); //currentPlayerEntry[] <- check with 0 or 1 for player
         currentPlayer = 1;
         var selectedRow = $(this).attr('row');
+        // console.log(selectedRow);
         var selectedCol = $(this).attr('col');
         var selectedValue = $(this).text();
         loadAnswers[selectedRow][selectedCol] = selectedValue;
-        console.log('this is first one', selectedCol);
+        // console.log(selectedValue);
     } else {
         $(this).text(currentPlayerEntry[currentPlayer]);
         currentPlayer = 0;
         var selectedRow = $(this).attr('row');
+        // console.log(selectedRow);
         var selectedCol = $(this).attr('col');
         var selectedValue = $(this).text();
         loadAnswers[selectedRow][selectedCol] = selectedValue;
-        console.log('this is second one',selectedCol);
+        console.log('this is selected value',selectedValue);
     }
+    checkRow();
+    // checkCol();
+    // checkDia1();
+    // checkDia2();
+
+    function checkRow () {
+        if(selectedValue === loadAnswers[selectedRow][selectedCol+1]){
+            console.log('checkRow');
+        } else {
+            console.log('else checkRow');
+        }
+    }
+
+    // function checkCol () {
+    //     if(selectedValue === loadAnswers[selectedRow + 1][selectedCol]){
+    //         console.log('checkCol');
+    //     } else {
+    //         console.log('else checkCol');
+    //     }
+    // }
+
+    // function checkDia1 () {
+    //     if(selectedValue === loadAnswers[selectedRow + 1][selectedCol - 1]){
+    //         console.log('checkDia1');
+    //     } else {
+    //         console.log('else checkDia1');
+    //     }
+    // }
+
+    // function checkDia2 () {
+    //     if(selectedValue === loadAnswers[selectedRow - 1][selectedCol + 1]){
+    //         console.log('checkDia2');
+    //     } else {
+    //         console.log('else checkDia2');
+    //     }
+    // }
+
+    console.log('run');
 }
+
+
+
+
+
+var loadAnswers = [
+    ['','',''],
+    ['','',''],
+    ['','','']
+    ]
 
 // function loadAnswers(){
 //     winner.push([1, 2, 3]);
@@ -60,19 +111,19 @@ function clickHandler() {
 //     winner.push([3, 5, 7]);
 // }
 
-var loadAnswers = [
-    // horizontals
-    [[0, 0], [0, 1], [0, 2]],
-    [[1, 0], [1, 1], [1, 2]],
-    [[2, 0], [2, 1], [2, 2]],
-    // verticals
-    [[0, 0], [1, 0], [2, 0]],
-    [[0, 1], [1, 1], [2, 1]],
-    [[0, 2], [1, 2], [2, 2]],
-    // diagonals
-    [[0, 0], [1, 1], [2, 2]],
-    [[2, 0], [1, 1], [0, 2]]
-  ];
+// var loadAnswers = [
+//     // horizontals
+//     [[0, 0], [0, 1], [0, 2]],
+//     [[1, 0], [1, 1], [1, 2]],
+//     [[2, 0], [2, 1], [2, 2]],
+//     // verticals
+//     [[0, 0], [1, 0], [2, 0]],
+//     [[0, 1], [1, 1], [2, 1]],
+//     [[0, 2], [1, 2], [2, 2]],
+//     // diagonals
+//     [[0, 0], [1, 1], [2, 2]],
+//     [[2, 0], [1, 1], [0, 2]]
+//   ];
 
 //   function checkWinner (){
 //     for (var i = 0; i < loadAnswers.length; i++) {
