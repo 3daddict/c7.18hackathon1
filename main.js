@@ -8,8 +8,9 @@ function initializeApp() {
 
 //Global Variables
 var currentPlayer = 0;
-var player1Selection = [];
-var player2Selection = [];
+// var player1Selection = [];
+// var player2Selection = [];
+var currentPlayerEntry = ['X', 'O'];
 
 
 // Create board dynamically on the dom
@@ -19,7 +20,7 @@ function drawBoard() {
         var row = $("<tr>")
         for (var colIndex = 0; colIndex < 3; colIndex++) {
             var square = $("<td>").attr('id', counter++);
-            row.attr('row', rowIndex);
+            square.attr('row', rowIndex);
             square.attr('col', colIndex);
             row.append(square);
         }
@@ -29,10 +30,11 @@ function drawBoard() {
 
 function clickHandler() {
     if(currentPlayer === 0) {
-        $(this).text('X');
+        $(this).text(currentPlayerEntry[currentPlayer]); //currentPlayerEntry[] <- check with 0 or 1 for player
         currentPlayer = 1;
     } else {
-        $(this).text('O');
+        $(this).text(currentPlayerEntry[currentPlayer]);
         currentPlayer = 0;
     }
 }
+
