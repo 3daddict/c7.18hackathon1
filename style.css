@@ -51,20 +51,20 @@ td:hover {
     /* animation: pulse 2s ease-in-out 0 infinite alternate; */
     /*animations*/
     animation-name: pulse;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
     animation-delay: 0;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     color: #14bdac;
-    text-shadow: #545454 1px 1px, #545454 2px 2px;
+    text-shadow: #545454 0.5px 0.5px, #545454 1px 1px;
   }
 
   @keyframes pulse {
     0% {
-      text-shadow:  #545454 1px 1px,  #545454 2px 2px;
+      text-shadow:  #545454 0.5px 0.5px,  #545454 1px 1px;
     }
     100% {
-      text-shadow:  #545454 3px 3px,  #545454 4px 4px;
+      text-shadow:  #545454 2px 2px,  #545454 3px 3px;
     }
   }

@@ -40,6 +40,8 @@ function clickHandler() {
         var selectedValue = $(this).text();
         loadAnswers[selectedRow][selectedCol] = selectedValue;
         // console.log(selectedValue);
+        $('#playerXName').removeClass('activePlayer');
+        $('#playerOName').addClass('activePlayer');
     } else {
         $(this).text(currentPlayerEntry[currentPlayer]);
         currentPlayer = 0;
@@ -49,6 +51,8 @@ function clickHandler() {
         var selectedValue = $(this).text();
         loadAnswers[selectedRow][selectedCol] = selectedValue;
         console.log('this is selected value',selectedValue);
+        $('#playerXName').addClass('activePlayer');
+        $('#playerOName').removeClass('activePlayer');
     }
     checkRow();
     // checkCol();
