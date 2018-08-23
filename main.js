@@ -245,6 +245,7 @@
         var currentPlayer = 0;
         var player1Count = 0;
         var player2Count = 0;
+        games_played = 0;
         $('#playerXWon').text('0');
         $('#playerOWon').text('0');
         $('#gamesPlayed').text('0');
