@@ -6,6 +6,9 @@
 .header {
     background-color: #EEE;
     text-align: center;
+    -webkit-box-shadow: -1px -4px 31px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px -4px 31px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px -4px 31px 0px rgba(0,0,0,0.75);
 }
 .header_h1 {
     font-family: 'Permanent Marker', cursive;
