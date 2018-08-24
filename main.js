@@ -54,7 +54,7 @@
 
     // Click Handler
     function clickHandler() {
-        play();
+        playClick();
         if($(this).text()!==''){
             return;
         }
@@ -131,11 +131,7 @@
             for (var i = 0; i < loadAnswers[col].length; i++) {
                 var letter = loadAnswers[i][col];
                 counts[letter]++;
-                // if(loadAnswers[i][col] === "X"){
-                //     xCount++;
-                // } else if(loadAnswers[col][i] === "O"){
-                //     oCount++;
-                // }
+
             }
             if (counts.X === winningCount) {
                 console.log('x wins');
@@ -158,14 +154,6 @@
             }
         }
     }
-    //down right
-    // for(var x = 0; x< loadAnswers.length; x++){
-    //     loadAnswers[x][x]
-    // }
-    // //upright
-    // for(var x=0,y=loadAnswers[0].length-1; x<loadAnswers.length; x++,y--){
-
-    // }
 
     // Checking Diagonal 1 (left top - right bottom) Winnings
     function checkDia1(selectedRow,selectedCol, winningCount){
@@ -232,20 +220,13 @@
             ['','','']
             ];
     }
-    
-    // var loadAnswers = [
-    //     ['','',''],
-    //     ['','',''],
-    //     ['','','']
-    //     ]
-
 
     function playerStats () {
         $('#"playerXWon').text();
     }    
 
     //function play the audio file over again without waiting for it to finish
-    function play() {
+    function playClick() {
         var audio = document.getElementById('clickAudio');
         if (audio.paused) {
             audio.play();
@@ -263,8 +244,7 @@
         $('#playerOWon').text('0');
         $('#gamesPlayed').text('0');
         clearBoard();
-        
-        // loadAnswers = fillLoadAnswers();
+
     }
 
     function clearBoard(){
