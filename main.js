@@ -10,6 +10,7 @@
         $('#playAgain1').click(gamesPlayedCount);
         $('#playAgain2').click(gamesPlayedCount);
         $('#settingsButton').click(settingsButton);
+        $('#settingsCancel').click(cancelButton);
     }
 
     //Global Variables
@@ -274,4 +275,8 @@
     function gamesPlayedCount(){
         games_played = games_played + 1;
         $('#gamesPlayed').text(games_played);
+    }
+
+    function cancelButton(){
+        $('#modalSettings').modal('hide');
     }
