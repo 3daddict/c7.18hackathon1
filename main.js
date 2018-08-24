@@ -10,6 +10,8 @@
         $('#playAgain1').click(gamesPlayedCount);
         $('#playAgain2').click(gamesPlayedCount);
         $('#settingsButton').click(settingsButton);
+        $("#settingsSave").click(changeGameBoardSize);
+        loadAnswers = fillLoadAnswers();
     }
 
     //Global Variables
@@ -19,16 +21,26 @@
     var currentPlayerEntry = ['X', 'O'];
     var winner = [];
     var amountToWin = 3;
+    var sizeOfBoard = 3;
     var totalAvailableSquares = null;
     var games_played = 0;
+    
+    
 
-
+    function changeGameBoardSize(){
+        var selectedSize = parseInt($("#gameSizeSelection").val());
+        sizeOfBoard = amountToWin = selectedSize;
+        $("#modalSettings").modal('hide');
+        resetStats();
+        loadAnswers = fillLoadAnswers(sizeOfBoard);
+        //drawBoard();
+    }
     // Create board dynamically on the dom
     function drawBoard() {
         var counter = 1;
-        for (var rowIndex = 0; rowIndex < 3; rowIndex++) {
+        for (var rowIndex = 0; rowIndex < sizeOfBoard; rowIndex++) {
             var row = $("<tr>")
-            for (var colIndex = 0; colIndex < 3; colIndex++) {
+            for (var colIndex = 0; colIndex < sizeOfBoard; colIndex++) {
                 totalAvailableSquares++;
                 var square = $("<td>").attr('id', counter++);
                 square.attr('row', rowIndex);
@@ -210,21 +222,21 @@
         }
     }
 
-    // function fillLoadAnswers(size){
-    //     return new Array(size).fill(undefined).map(function(){ return new Array(size).fill('')});
-        //Esther, George, and Michael have promised to understand the above line by monday's presentation;  
-        // return [
-        //     ['','',''],
-        //     ['','',''],
-        //     ['','','']
-        //     ];
-    // }
-    // var loadAnswers = fillLoadAnswers(3);
-    var loadAnswers = [
-        ['','',''],
-        ['','',''],
-        ['','','']
-        ]
+    function fillLoadAnswers(size=3){
+        return new Array(size).fill(undefined).map(function(){ return new Array(size).fill('')});
+        // Esther, George, and Michael have promised to understand the above line by monday's presentation;  
+        return [
+            ['','',''],
+            ['','',''],
+            ['','','']
+            ];
+    }
+    
+    // var loadAnswers = [
+    //     ['','',''],
+    //     ['','',''],
+    //     ['','','']
+    //     ]
 
 
     function playerStats () {
@@ -260,11 +272,7 @@
         $("td").click(clickHandler);
         $('#modalWin').modal('hide')
         $('#modalDraw').modal('hide')
-        loadAnswers = [
-            ['','',''],
-            ['','',''],
-            ['','','']
-            ];
+        loadAnswers = fillLoadAnswers(sizeOfBoard);
     }
 
     function settingsButton(){
